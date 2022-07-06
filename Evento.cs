@@ -12,9 +12,9 @@ namespace csharp_gestore_eventi
 
         public DateTime data { get; set; }
 
-        public int capienzaMassina { get; }
+        public int capienzaMassina { get; private set; }
 
-        public int postiPrenotati { get; }
+        public int postiPrenotati { get; private set; }
         public abstract void PrenotaPosti(int param);
         public abstract void DisdiciPosti(int param);
 

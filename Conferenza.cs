@@ -59,5 +59,10 @@ namespace csharp_gestore_eventi
 
             Console.WriteLine($"Disdetta effettuata! Hai disdetto {param} posti, Capacità massima {this.capienzaMassima}, Posti prenotati {this.postiPrenotati}");
         }
+
+        public override string ToString()
+        {
+            return data.ToString("dd/MM/yyyy") + " - " + titolo;
+        }
     }
 }
