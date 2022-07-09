@@ -15,21 +15,11 @@ namespace csharp_gestore_eventi
 
         public Conferenza(string titolo, DateTime data, int postiDisponibili)
         {
-            if (titolo.Length > 0)
-            {
-                this.titolo = titolo;
-            }
-            DateTime todayFull = DateTime.Now;
+            this.titolo = titolo;
 
-            if (data > todayFull)
-            {
-                this.data = data;
-            }
+            this.data = data;
 
-            if (postiDisponibili > 0)
-            {
-                this.capienzaMassima = postiDisponibili;
-            }
+            this.capienzaMassima = postiDisponibili;
 
             this.postiPrenotati = 0;
         }
@@ -44,7 +34,7 @@ namespace csharp_gestore_eventi
                 this.postiPrenotati += param;
             }
 
-            Console.WriteLine($"Prenotazione effettuata! Hai prenotato {param} posti, Capacità massima {this.capienzaMassima}, Posti prenotati {this.postiPrenotati}");
+            Console.WriteLine($"Prenotazione effettuata! Hai prenotato {param} posti, Capacità massima {this.capienzaMassima}, Posti prenotati {this.postiPrenotati}, posti disponibili: {this.capienzaMassima - this.postiPrenotati}");
         }
 
         public override void DisdiciPosti(int param)
@@ -57,12 +47,16 @@ namespace csharp_gestore_eventi
                 this.postiPrenotati -= param;
             }
 
-            Console.WriteLine($"Disdetta effettuata! Hai disdetto {param} posti, Capacità massima {this.capienzaMassima}, Posti prenotati {this.postiPrenotati}");
+            this.postiPrenotati -= param;
+
+            Console.WriteLine($"Disdetta effettuata! Hai disdetto {param} posti, Capacità massima {this.capienzaMassima}, Posti prenotati {this.postiPrenotati}, posti disponibili: {this.capienzaMassima - this.postiPrenotati}");
         }
 
         public override string ToString()
         {
             return data.ToString("dd/MM/yyyy") + " - " + titolo;
         }
+
+        
     }
 }
