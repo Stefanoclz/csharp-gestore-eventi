@@ -5,16 +5,41 @@ using csharp_gestore_eventi;
 
 Gestionale nuovo = new Gestionale();
 ProgrammaEventi program = new ProgrammaEventi("TicketTwo");
-
+/*
 Evento nuovoEvento = nuovo.CreaNuovoEvento();
+program.AddEventi(nuovoEvento);
 Console.WriteLine("Quanti posti vuoi prenotare?");
 int prenotazioni = Int32.Parse(Console.ReadLine());
 nuovoEvento.PrenotaPosti(prenotazioni);
-Console.WriteLine("Vuoi disdire dei posti?In caso indica quanti:");
-int disdici = Int32.Parse(Console.ReadLine());
-nuovoEvento.DisdiciPosti(disdici);
-program.AddEventi(nuovoEvento);
-program.StampaEventi();
+while(nuovoEvento.postiPrenotati > 0)
+{
+    Console.WriteLine("Vuoi disdire dei posti? si/no");
+    string answer = Console.ReadLine();
+
+    if (answer == "si")
+    {
+        Console.WriteLine("Quanti posti vuoi disdire?");
+        int disdici = Int32.Parse(Console.ReadLine());
+        nuovoEvento.DisdiciPosti(disdici);
+    }
+    else
+    {
+        program.StampaEventi();
+        break;
+    }
+}
+
+program.CercaEventi();
+Console.WriteLine("Vuoi sapere quanti eventi sono in programma? si/no");
+string decision = Console.ReadLine();
+if(decision == "si")
+{
+    program.TotEventi();
+}
+
+program.CancellaEventi();*/
+program.RiassuntoEventi();
+
 
 
 

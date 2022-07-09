@@ -41,14 +41,15 @@ namespace csharp_gestore_eventi
         public void DisdiciPosti(int param)
         {
 
-            int postiDisp = this.capienzaMassima - this.postiPrenotati;
-
-            if (param > 0 && param <= postiDisp)
+            if (param <= this.postiPrenotati)
             {
                 this.postiPrenotati -= param;
             }
+            else
+            {
+                Console.WriteLine("Numero troppo alto!");
+            }
 
-            this.postiPrenotati -= param;
 
             Console.WriteLine($"Disdetta effettuata! Hai disdetto {param} posti, Capacità massima {this.capienzaMassima}, Posti prenotati {this.postiPrenotati}, posti disponibili: {this.capienzaMassima - this.postiPrenotati}");
         }
@@ -56,7 +57,7 @@ namespace csharp_gestore_eventi
 
         public override string ToString()
         {
-            return data.ToString("dd/MM/yyyy") + " - " + titolo;
+            return data.ToString("dd/MM/yyyy") + " - " + this.titolo;
         }
  
 

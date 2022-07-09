@@ -39,5 +39,59 @@ namespace csharp_gestore_eventi
                 Console.WriteLine($"Titolo: {param.titolo} | data: {param.data} | posti disponibili: {param.capienzaMassima - param.postiPrenotati}");
             }
         }
+
+        public void CercaEventi()
+        {
+            Console.WriteLine("Inserisci la data degli eventi da cercare: ");
+            DateTime data = DateTime.Parse(Console.ReadLine());
+
+
+            List<Evento> trovati = new List<Evento>();
+
+            foreach (Evento evento in eventi)
+            {
+                if (evento.data == data)
+                {
+                    trovati.Add(evento);
+                }
+            }
+
+            foreach (Evento eventoInData in trovati)
+            {
+                Console.WriteLine("EVENTI TROVATI:");
+                Console.WriteLine($"Titolo: {eventoInData.titolo} | data: {eventoInData.data} | posti disponibili: {eventoInData.capienzaMassima - eventoInData.postiPrenotati}");
+            }
+        }
+
+        public void TotEventi()
+        {
+            int eventiTotali = this.eventi.Count();
+            Console.WriteLine($"Attualmente sono in programma {eventiTotali} eventi");
+        }
+
+        public void CancellaEventi()
+        {
+            Console.WriteLine("Vuoi eliminare tutti gli eventi in programma? si/no");
+            string scelta = Console.ReadLine();
+            if(scelta == "si")
+            {
+                eventi.Clear();
+            }
+            else
+            {
+                Console.WriteLine("EVENTI IN PROGRAMMA: ");
+                StampaEventi();
+            }
+        }
+
+        public void RiassuntoEventi()
+        {
+            Console.WriteLine($"Nome programma evento: {this.titolo}");
+            foreach(Evento evento in eventi)
+            {
+                string resume = evento.ToString();
+                Console.WriteLine(resume);
+            }
+        }
     }
 }
